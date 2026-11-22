@@ -1,0 +1,5 @@
+let{readdirSync:G,readFileSync:R,mkdirSync:K,writeFileSync:W}=require('fs'),I='/input'
+for(d of G(I)){
+J=I+'/'+d,A='/output/'+d,p=R(J+'/program.bin'),q=R(J+'/input.bin'),D=new Int32Array(256),C=[],M=[],H=65536,o=Buffer.alloc(H),s=c=l=i=k=0,t=1e6,e=-1
+for(;e<0;)v=p[k],m=[0,1,4][v]|(v>>2==12)*2,B=v>15&v<35&v!=31,N=v!=23&v!=27,f=86>>v&v<7|v==82,w=p[k+1]|p[k+2]<<8,a=D[s-2],b=D[s-1],x=a>>>0,y=b>>>0,!t--?e=10:k<0|k+m>=p.length?e=9:s<(B?1+N:v==7?3:v>4&v<7|v==65?2:[3,4,49,50,64,80,81,83].includes(v))?e=2:s+f>256?e=3:(k+=1+m,B?v>18&v<23&!b?e=4:D[s-=N,s-1]=[a+b,a-b,Math.imul(a,b),a/b,a%b,x/y,x%y,-b,a&b,a|b,a^b,~b,a<<b,a>>b,a>>>b,,a==b,a<b,x<y][v-16]:f?D[s++]=v==1?w<<24>>24:v==2?p.readInt32LE(k-4):v==4?b:v==6?a:q[i++]??-1:!v?e=0:v==3?s--:v==5?(D[s-1]=a,D[s-2]=b):v==7?(D[s-1]=D[s-3],D[s-3]=a,D[s-2]=b):v>47&v<51?k+=(v<49||!D[--s]==(v&1))*(w<<16>>16):v==51?c>63?e=7:(C[c++]=k,k=w):v==52?c?k=C[--c]:e=8:v>>1==32?b>>>8?e=6:v&1?(M[b]=a,s-=2):D[s-1]=M[b]:v==80?l+(z=''+D[--s]).length>H?e=11:l+=o.write(z,l):v==81?l==H?e=11:o[l++]=D[--s]:e=v==83?b&255:5)
+K(A),W(A+'/stdout.bin',o.slice(0,l)),W(A+'/exit.txt',''+e)}
