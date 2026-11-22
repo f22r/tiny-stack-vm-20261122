@@ -1,5 +1,5 @@
-I='/input/',({readdirSync:G,readFileSync:R,mkdirSync:K,writeFileSync:W}=require('fs'))
-for(d of G(I)){
-J=I+d+'/',A='/output/'+d,p=R(J+'program.bin'),q=R(J+'input.bin'),D=[],C=[],M=[],o='',s=c=i=k=0,t=1e6,e=-1
-for(;e<0;)v=p[k],J=v>>2==12,m=v==2?4:v==1|J*2,B=v>15&v<35&v!=31,f=86>>v&v<7|v==82,P=v<8?v-1>>1:B?2-(v==23|v==27):v>>1==32?1+v%2:J&v%3>0|v>>2==20&!f,w=p[k+1]|p[k+2]<<8,a=D[s-2],b=D[s-1],x=a>>>0,y=b>>>0,!t--?e=10:p[k+m]>=0?s<P?e=2:s+f>256?e=3:(k+=1+m,s-=P*(v>7),B?(r=[a+b,a-b,Math.imul(a,b),a/b,a%b,x/y,x%y,-b,a&b,a|b,a^b,~b,a<<b,a>>b,a>>>b,,a==b,a<b,x<y][v-16])*0==0?D[s++]=r|0:e=4:f?D[s++]=v==1?w<<24>>24:v==2?p.readInt32LE(k-4):v==4?b:v==6?a:q[i++]??-1:v==3?s--:v==5?(D[s-1]=a,D[s-2]=b):v==7?D.splice(s-3,3,a,b,D[s-3]):J&v<51?(v==48|!b==v%2)&&(k+=w<<16>>16):v==51?c>63?e=7:(C[c++]=k,k=w):v==52?c?k=C[--c]:e=8:v>>1==32?b>>>8?e=6:v&1?M[b]=a:D[s++]=M[b]|0:v>>1==40?(z=o+(v&1?String.fromCharCode(b&255):b))[65536]?e=11:o=z:e=v==83?b&255:v&&5):e=9
-K(A),W(A+'/stdout.bin',o,'latin1'),W(A+'/exit.txt',''+e)}
+I='/input/',{readFileSync:R,writeFileSync:W}=F=require('fs')
+for(d of F.readdirSync(I)){
+A='/output/'+(d+='/'),p=R(I+d+'program.bin'),q=R(I+d+'input.bin'),D=[],C=[],M=[],o='',s=c=i=k=0,t=1e6,e=-1
+for(;e<0;)v=p[k],g=v>>4,m=v==2?4:v==1|(g==3&v<52)*2,f=86>>v&!g|v==82,P=[v-1>>1,2-(v==23|v==27),2,v%51>48,v-63,v!=82][g],a=D[s-2],b=D[s-1],x=a>>>0,y=b>>>0,e=!t--?10:(v&15)<[8,15,3,5,2,4][g]?p[k+m]>=0?s<P?2:f&s>255?3:(k+=1+m,w=m&&p.readIntLE(k-m,m),f?D[s++]=m?w:v<7?v<5?b:a:q[i++]??-1:v>>2==1?(D[s-1]=D[s-P],D[s-P]=a,D[s-2]=b):(s-=P,!v|v==83?e=v&&b&255:g-1>>1?v<51?k+=(v<49|!b==v%2)*w:v<52?c>63?e=7:(C[c++]=k,k=w&65535):g<4?c?k=C[--c]:e=8:g<5?b>>>8?e=6:v&1?M[b]=a:D[s++]=M[b]|0:(z=o+(v&1?String.fromCharCode(b):b))[65536]?e=11:o=z:(r=[a+b,a-b,Math.imul(a,b),a/b,a%b,x/y,x%y,-b,a&b,a|b,a^b,~b,a<<b,a>>b,a>>>b,,a==b,a<b,x<y][v-16])*0==0?D[s++]=r|0:e=4),e):9:5
+F.mkdirSync(A),W(A+'stdout.bin',o,'latin1'),W(A+'exit.txt',''+e)}
