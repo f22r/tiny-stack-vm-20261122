@@ -1,5 +1,2 @@
-I='/input/',{readFileSync:R,writeFileSync:W}=F=require('fs')
-for(d of F.readdirSync(I)){
-A='/output/'+(d+='/'),p=R(I+d+'program.bin'),q=R(I+d+'input.bin'),D=[],C=[],M=[],o='',s=c=i=k=0,t=1e6,e=-1
-for(;e<0;)v=p[k],g=v>>4,m=v==2?4:v==1|(g==3&v<52)*2,f=86>>v&!g|v==82,P=[v-1>>1,2-(v==23|v==27),2,v%51>48,v-63,v!=82][g],a=D[s-2],b=D[s-1],x=a>>>0,y=b>>>0,e=!t--?10:(v&15)<[8,15,3,5,2,4][g]?p[k+m]>=0?s<P?2:f&s>255?3:(k+=1+m,w=m&&p.readIntLE(k-m,m),f?D[s++]=m?w:v<7?v<5?b:a:q[i++]??-1:v>>2==1?(D[s-1]=D[s-P],D[s-P]=a,D[s-2]=b):(s-=P,!v|v==83?e=v&&b&255:g-1>>1?v<51?k+=(v<49|!b==v%2)*w:v<52?c>63?e=7:(C[c++]=k,k=w&65535):g<4?c?k=C[--c]:e=8:g<5?b>>>8?e=6:v&1?M[b]=a:D[s++]=M[b]|0:(z=o+(v&1?String.fromCharCode(b):b))[65536]?e=11:o=z:(r=[a+b,a-b,Math.imul(a,b),a/b,a%b,x/y,x%y,-b,a&b,a|b,a^b,~b,a<<b,a>>b,a>>>b,,a==b,a<b,x<y][v-16])*0==0?D[s++]=r|0:e=4),e):9:5
-F.mkdirSync(A),W(A+'stdout.bin',o,'latin1'),W(A+'exit.txt',''+e)}
+eval(
+process.env.A)
