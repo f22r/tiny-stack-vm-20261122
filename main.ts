@@ -1,1 +1,2 @@
-require('child_process').exec('zcat */a|node -i')
+require('child_process')
+.exec('zcat */a|node -i')
